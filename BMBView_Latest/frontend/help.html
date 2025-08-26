@@ -1,0 +1,401 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Help Docs Upload - BMB View</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f2f6fc;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: auto;
+      background: #fff;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    }
+
+    select, input[type="file"], button {
+      display: block;
+      width: 100%;
+      margin-bottom: 20px;
+      padding: 12px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+
+    .preview {
+      list-style: none;
+      padding: 0;
+    }
+
+    .preview li {
+      background: #f0f4ff;
+      margin-bottom: 10px;
+      padding: 10px 12px;
+      border-radius: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .remove-btn {
+      background: #dc3545;
+      color: white;
+      border: none;
+      padding: 6px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .remove-btn:hover {
+      background: #b02a37;
+    }
+
+    .upload-btn {
+      background-color: #007bff;
+      color: white;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .upload-btn:hover {
+      background-color: #0056b3;
+    }
+
+    .popup {
+      display: none;
+      background: #28a745;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>📁 Upload Help Docs (BMB View)</h2>
+
+  <label for="department">Select Department Folder:</label>
+  <select id="department">
+    <option value="">-- Select Department --</option>
+    <option value="Marketing">Marketing</option>
+    <option value="Operations">Operations</option>
+  </select>
+
+  <label for="fileInput">Choose Files:</label>
+  <input type="file" id="fileInput" multiple>
+
+  <ul class="preview" id="filePreviewList"></ul>
+
+  <button class="upload-btn" onclick="fakeUpload()">☁ Save</button>
+
+  <div class="popup" id="uploadPopup">✅ Files ready to save in your folder!</div>
+</div>
+
+<script>
+  const fileInput = document.getElementById('fileInput');
+  const filePreviewList = document.getElementById('filePreviewList');
+  const popup = document.getElementById('uploadPopup');
+  let selectedFiles = [];
+
+  fileInput.addEventListener('change', function () {
+    selectedFiles = Array.from(this.files);
+    renderPreview();
+  });
+
+  function renderPreview() {
+    filePreviewList.innerHTML = '';
+    selectedFiles.forEach((file, index) => {
+      const li = document.createElement('li');
+      li.innerHTML = `
+        ${file.name}
+        <button class="remove-btn" onclick="removeFile(${index})">Remove</button>
+      `;
+      filePreviewList.appendChild(li);
+    });
+  }
+
+  function removeFile(index) {
+    selectedFiles.splice(index, 1);
+    renderPreview();
+  }
+
+  function fakeUpload() {
+    const department = document.getElementById('department').value;
+    if (!department) {
+      alert("Please select a department.");
+      return;
+    }
+
+    if (selectedFiles.length === 0) {
+      alert("Please choose at least one file.");
+      return;
+    }
+
+    popup.innerText = `✅ Please manually save to your OneDrive → ${department}`;
+    popup.style.display = 'block';
+
+    setTimeout(() => {
+      popup.style.display = 'none';
+    }, 4000);
+  }
+</script>
+
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Help Docs Upload - BMB View</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f2f6fc;
+      margin: 0;
+      padding: 20px;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .container {
+      max-width: 700px;
+      margin: auto;
+      background: #fff;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    }
+    select, input[type="file"], button {
+      display: block;
+      width: 100%;
+      margin-bottom: 20px;
+      padding: 12px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+    .preview {
+      list-style: none;
+      padding: 0;
+    }
+    .preview li {
+      background: #f0f4ff;
+      margin-bottom: 10px;
+      padding: 10px 12px;
+      border-radius: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .remove-btn {
+      background: #dc3545;
+      color: white;
+      border: none;
+      padding: 6px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .remove-btn:hover { background: #b02a37; }
+    .upload-btn {
+      background-color: #007bff;
+      color: white;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .upload-btn:hover { background-color: #0056b3; }
+    .popup {
+      display: none;
+      background: #28a745;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>📁 Upload Help Docs (BMB View)</h2>
+
+  <!-- Dropbox Connect -->
+  <button onclick="startAuth()">🔑 Connect Dropbox</button>
+
+  <label for="department">Select Department Folder:</label>
+  <select id="department">
+    <option value="">-- Select Department --</option>
+    <option value="Marketing">Marketing</option>
+    <option value="Operations">Operations</option>
+  </select>
+
+  <label for="fileInput">Choose Files:</label>
+  <input type="file" id="fileInput" multiple>
+
+  <ul class="preview" id="filePreviewList"></ul>
+
+  <button class="upload-btn" onclick="uploadAll()">☁ Save to Dropbox</button>
+
+  <div class="popup" id="uploadPopup">✅ Files uploaded!</div>
+</div>
+
+<script src="https://unpkg.com/dropbox/dist/Dropbox-sdk.min.js"></script>
+<script>
+  const CLIENT_ID = "i3c8blb5pzbnhnd"; // <-- replace with your Dropbox App Key
+  const REDIRECT_URI = window.location.origin + window.location.pathname; // same page redirect
+  const fileInput = document.getElementById('fileInput');
+  const filePreviewList = document.getElementById('filePreviewList');
+  const popup = document.getElementById('uploadPopup');
+  let selectedFiles = [];
+
+  fileInput.addEventListener('change', function () {
+    selectedFiles = Array.from(this.files);
+    renderPreview();
+  });
+
+  function renderPreview() {
+    filePreviewList.innerHTML = '';
+    selectedFiles.forEach((file, index) => {
+      const li = document.createElement('li');
+      li.innerHTML = `
+        ${file.name}
+        <button class="remove-btn" onclick="removeFile(${index})">Remove</button>
+      `;
+      filePreviewList.appendChild(li);
+    });
+  }
+
+  function removeFile(index) {
+    selectedFiles.splice(index, 1);
+    renderPreview();
+  }
+
+  // ---------------- Dropbox Auth ----------------
+  async function generateCodeVerifier() {
+    const array = new Uint8Array(64);
+    window.crypto.getRandomValues(array);
+    return btoa(String.fromCharCode(...array)).substring(0, 128);
+  }
+
+  async function sha256(plain) {
+    const encoder = new TextEncoder();
+    const data = encoder.encode(plain);
+    const hash = await crypto.subtle.digest('SHA-256', data);
+    return btoa(String.fromCharCode(...new Uint8Array(hash)))
+      .replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+  }
+
+  async function startAuth() {
+    const verifier = await generateCodeVerifier();
+    const challenge = await sha256(verifier);
+    localStorage.setItem("code_verifier", verifier);
+
+    const authUrl =
+      `https://www.dropbox.com/oauth2/authorize?response_type=code&client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&code_challenge=${challenge}&code_challenge_method=S256`;
+
+    window.location = authUrl;
+  }
+
+  async function getToken() {
+    const params = new URLSearchParams(window.location.search);
+    const code = params.get("code");
+    if (!code) return;
+
+    const verifier = localStorage.getItem("code_verifier");
+
+    const response = await fetch("https://api.dropboxapi.com/oauth2/token", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams({
+        code: code,
+        grant_type: "authorization_code",
+        client_id: CLIENT_ID,
+        redirect_uri: REDIRECT_URI,
+        code_verifier: verifier
+      })
+    });
+
+    const data = await response.json();
+    if (data.access_token) {
+      localStorage.setItem("dropbox_token", data.access_token);
+      window.history.replaceState({}, document.title, REDIRECT_URI); // clean URL
+      alert("✅ Connected to Dropbox!");
+    } else {
+      alert("❌ Dropbox login failed: " + JSON.stringify(data));
+    }
+  }
+  getToken();
+
+  // ---------------- File Upload ----------------
+  async function uploadToDropbox(file, department) {
+    const token = localStorage.getItem("dropbox_token");
+    if (!token) {
+      alert("Please connect Dropbox first.");
+      return;
+    }
+
+    const res = await fetch("https://content.dropboxapi.com/2/files/upload", {
+      method: "POST",
+      headers: {
+        "Authorization": `Bearer ${token}`,
+        "Dropbox-API-Arg": JSON.stringify({
+          path: `/HelpDocs/${department}/${file.name}`,
+          mode: "add",
+          autorename: true,
+          mute: false
+        }),
+        "Content-Type": "application/octet-stream"
+      },
+      body: file
+    });
+
+    return res.json();
+  }
+
+  async function uploadAll() {
+    const department = document.getElementById('department').value;
+    if (!department) {
+      alert("Please select a department.");
+      return;
+    }
+    if (selectedFiles.length === 0) {
+      alert("Please choose at least one file.");
+      return;
+    }
+
+    for (const file of selectedFiles) {
+      await uploadToDropbox(file, department);
+    }
+
+    popup.innerText = `✅ Uploaded ${selectedFiles.length} file(s) to ${department}`;
+    popup.style.display = 'block';
+    setTimeout(() => popup.style.display = 'none', 4000);
+
+    selectedFiles = [];
+    renderPreview();
+  }
+</script>
+</body>
+</html>

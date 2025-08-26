@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HR Management Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .sidebar {
+            width: 70px;
+            transition: all 0.3s;
+        }
+        .sidebar:hover {
+            width: 250px;
+        }
+        .sidebar:hover .nav-text {
+            display: inline;
+        }
+        .sidebar:hover .logo-text {
+            display: inline;
+        }
+        .sidebar:hover .user-info {
+            display: block;
+        }
+        .nav-text, .logo-text, .user-info {
+            display: none;
+        }
+        .main-content {
+            margin-left: 70px;
+            transition: margin-left 0.3s;
+        }
+        .sidebar:hover ~ .main-content {
+            margin-left: 250px;
+        }
+        .grid-card {
+            transition: all 0.3s;
+        }
+        .grid-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .shift-status {
+            border-left: 4px solid;
+        }
+        .shift-status.checked-in {
+            border-left-color: #10B981;
+        }
+        .shift-status.checked-out {
+            border-left-color: #EF4444;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="flex h-screen overflow-hidden">
+        <!-- Sidebar -->
+        <div class="sidebar bg-blue-800 text-white flex-shrink-0">
+            <div class="p-4 border-b border-blue-700 flex items-center">
+                <div class="rounded-full bg-white text-blue-800 w-10 h-10 flex items-center justify-center font-bold text-lg">
+                    <i class="fas fa-users-cog"></i>
+                </div>
+                <span class="logo-text ml-3 text-xl font-semibold">HR Portal</span>
+            </div>
+
+            <nav class="p-2">
+                <a href="index.html" class="nav-item flex items-center p-3 mb-1 rounded hover:bg-blue-700 active-nav-item" id="dashboard-nav">
+                    <i class="fas fa-tachometer-alt mr-3"></i>
+                    <span class="nav-text">Dashboard</span>
+                </a>
+                <a href="onboarding.html" class="nav-item flex items-center p-3 mb-1 rounded hover:bg-blue-700" id="onboarding-nav">
+                    <i class="fas fa-user-plus mr-3"></i>
+                    <span class="nav-text">Onboarding</span>
+                </a>
+                <a href="performance.html" class="nav-item flex items-center p-3 mb-1 rounded hover:bg-blue-700" id="performance-nav">
+                    <i class="fas fa-chart-line mr-3"></i>
+                    <span class="nav-text">Performance</span>
+                </a>
+                <a href="http://localhost/hr_portal/attendance_form.html" class="nav-item flex items-center p-3 mb-1 rounded hover:bg-blue-700" id="attendance-nav">
+                    <i class="fas fa-calendar-check mr-3"></i>
+                    <span class="nav-text">Attendance</span>
+                </a>
+                <a href="leave.html" class="nav-item flex items-center p-3 mb-1 rounded hover:bg-blue-700" id="leave-nav">
+                    <i class="fas fa-calendar-minus mr-3"></i>
+                    <span class="nav-text">Leave Management</span>
+                </a>
+                <a href="report.html
+                " class="nav-item flex items-center p-3 mb-1 rounded hover:bg-blue-700" id="reports-nav">
+                    <i class="fas fa-chart-pie mr-3"></i>
+                    <span class="nav-text">Reports</span>
+                </a>
+                <a href="settings.html" class="nav-item flex items-center p-3 mb-1 rounded hover:bg-blue-700" id="settings-nav">
+                    <i class="fas fa-cog mr-3"></i>
+                    <span class="nav-text">Settings</span>
+                </a>
+                <a href="help.html" class="nav-item flex items-center p-3 mb-1 rounded hover:bg-blue-700" id="help-nav">
+                    <i class="fas fa-folder-open mr-3"></i>
+                    <span class="nav-text">Upload Documents
+                    </span>
+                </a>
+            </nav>
+
+            <div class="p-4 absolute bottom-0 ">      
+                <button class="flex items-center text-blue-200 hover:text-white w-full">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span class="nav-text ml-3">Logout</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content flex-1 overflow-auto">
+            <!-- Top Navigation -->
+            <header class="bg-white shadow-sm sticky top-0 z-10">
+                <div class="flex justify-end items-center p-4">
+                    <div class="flex items-center space-x-4">
+                        <button class="text-gray-600 hover:text-gray-900">
+                            <i class="fas fa-bell"></i>
+                            <!-- <span class="absolute top-0 right-0 h-2 w-2 rounded-full bg-red-500"></span> -->
+                        </button>
+                        <div class="flex items-center">
+                            <div class="rounded-full bg-blue-100 text-blue-800 w-8 h-8 flex items-center justify-center">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <span class="ml-2 text-sm font-medium">John Doe</span>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dashboard Content -->
+            <main class="p-4" id="main-content">
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
+                    <!-- Shift Control Section -->
+                    <div class="bg-white rounded-lg shadow shift-status checked-out">
+                        <div class="p-5 border-b border-gray-200">
+                            <h3 class="text-lg font-medium text-gray-800">Shift Control</h3>
+                        </div>
+                        <div class="p-5">
+                            <div class="flex flex-col items-center justify-center">
+                                <div class="text-center mb-6">
+                                    <div class="text-sm text-gray-500 mb-1">Current Status</div>
+                                    <div class="text-2xl font-bold text-red-500 mb-4">Checked Out</div>
+                                    <div class="flex space-x-4">
+                                        <button id="checkInBtn" class="bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded-lg font-medium transition">
+                                            <i class="fas fa-sign-in-alt mr-2"></i>Check In
+                                        </button>
+                                        <button id="checkOutBtn" class="bg-gray-300 text-gray-600 px-6 py-2 rounded-lg font-medium cursor-not-allowed" disabled>
+                                            <i class="fas fa-sign-out-alt mr-2"></i>Check Out
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="w-full border-t border-gray-200 pt-4">
+                                    <div class="grid grid-cols-2 gap-4">
+                                        <div>
+                                            <div class="text-sm text-gray-500">Last Login</div>
+                                            <div class="font-medium">Today, 08:45 AM</div>
+                                        </div>
+                                        <div>
+                                            <div class="text-sm text-gray-500">Last Logout</div>
+                                            <div class="font-medium">Today, 05:30 PM</div>
+                                        </div>
+                                        <div>
+                                            <div class="text-sm text-gray-500">Total Hours Today</div>
+                                            <div class="font-medium">8 hours 45 mins</div>
+                                        </div>
+                                        <div>
+                                            <div class="text-sm text-gray-500">Current Shift</div>
+                                            <div class="font-medium">Morning (9AM-6PM)</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dashboard Stats -->
+                    <div class="lg:col-span-2">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="bg-white rounded-lg shadow p-6 grid-card">
+                                <div class="flex justify-between items-start">
+                                    <div>
+                                        <h3 class="text-sm font-medium text-gray-500 uppercase">New Employees</h3>
+                                        <p class="text-3xl font-bold mt-2">12</p>
+                                        <p class="text-green-500 text-sm mt-1"><i class="fas fa-arrow-up mr-1"></i> 3 from last month</p>
+                                    </div>
+                                    <div class="bg-blue-100 text-blue-800 p-3 rounded-lg">
+                                        <i class="fas fa-user-plus text-lg"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bg-white rounded-lg shadow p-6 grid-card">
+                                <div class="flex justify-between items-start">
+                                    <div>
+                                        <h3 class="text-sm font-medium text-gray-500 uppercase">Pending Leaves</h3>
+                                        <p class="text-3xl font-bold mt-2">8</p>
+                                        <p class="text-yellow-500 text-sm mt-1"><i class="fas fa-exclamation-circle mr-1"></i> Needs approval</p>
+                                    </div>
+                                    <div class="bg-yellow-100 text-yellow-800 p-3 rounded-lg">
+                                        <i class="fas fa-calendar-minus text-lg"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bg-white rounded-lg shadow p-6 grid-card">
+                                <div class="flex justify-between items-start">
+                                    <div>
+                                        <h3 class="text-sm font-medium text-gray-500 uppercase">Performance Reviews</h3>
+                                        <p class="text-3xl font-bold mt-2">15</p>
+                                        <p class="text-blue-500 text-sm mt-1"><i class="fas fa-clock mr-1"></i> Due this week</p>
+                                    </div>
+                                    <div class="bg-green-100 text-green-800 p-3 rounded-lg">
+                                        <i class="fas fa-chart-line text-lg"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bg-white rounded-lg shadow p-6 grid-card">
+                                <div class="flex justify-between items-start">
+                                    <div>
+                                        <h3 class="text-sm font-medium text-gray-500 uppercase">Absent Today</h3>
+                                        <p class="text-3xl font-bold mt-2">5</p>
+                                        <p class="text-red-500 text-sm mt-1"><i class="fas fa-user-times mr-1"></i> 2 without notice</p>
+                                    </div>
+                                    <div class="bg-red-100 text-red-800 p-3 rounded-lg">
+                                        <i class="fas fa-user-slash text-lg"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
+                    <!-- Recent Activities -->
+                    <div class="bg-white rounded-lg shadow col-span-2">
+                        <div class="p-5 border-b border-gray-200">
+                            <h3 class="text-lg font-medium text-gray-800">Recent Activities</h3>
+                        </div>
+                        <div class="p-5">
+                            <div class="space-y-4">
+                                <div class="flex items-start">
+                                    <div class="bg-blue-100 text-blue-800 rounded-full p-2 mr-3">
+                                        <i class="fas fa-user-plus"></i>
+                                    </div>
+                                    <div>
+                                        <p class="font-medium">New employee onboarded</p>
+                                        <p class="text-sm text-gray-600">Ayush joined as Developer</p>
+                                        <p class="text-xs text-gray-500 mt-1">Today, 10:45 AM</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="bg-green-100 text-green-800 rounded-full p-2 mr-3">
+                                        <i class="fas fa-check-circle"></i>
+                                    </div>
+                                    <div>
+                                        <p class="font-medium">Leave approved</p>
+                                        <p class="text-sm text-gray-600">Aditya's leave request for 3 days</p>
+                                        <p class="text-xs text-gray-500 mt-1">Yesterday, 3:30 PM</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="bg-yellow-100 text-yellow-800 rounded-full p-2 mr-3">
+                                        <i class="fas fa-exclamation-triangle"></i>
+                                    </div>
+                                    <div>
+                                        <p class="font-medium">Late arrival</p>
+                                        <p class="text-sm text-gray-600">Atharv arrived 1 hour late</p>
+                                        <p class="text-xs text-gray-500 mt-1">Yesterday, 9:15 AM</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="bg-purple-100 text-purple-800 rounded-full p-2 mr-3">
+                                        <i class="fas fa-chart-line"></i>
+                                    </div>
+                                    <div>
+                                        <p class="font-medium">Performance review completed</p>
+                                        <p class="text-sm text-gray-600">Quarterly review for Aditi</p>
+                                        <p class="text-xs text-gray-500 mt-1">2 days ago</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Calendar Widget -->
+                    <div class="bg-white rounded-lg shadow">
+                        <div class="p-5 border-b border-gray-200">
+                            <h3 class="text-lg font-medium text-gray-800">Calendar</h3>
+                        </div>
+                        <div class="p-5">
+                            <div class="grid grid-cols-7 gap-1 text-center text-xs font-medium text-gray-500 mb-2">
+                                <div>Sun</div>
+                                <div>Mon</div>
+                                <div>Tue</div>
+                                <div>Wed</div>
+                                <div>Thu</div>
+                                <div>Fri</div>
+                                <div>Sat</div>
+                            </div>
+                            <div class="grid grid-cols-7 gap-1 text-center">
+                                <div class="py-2 text-gray-400">28</div>
+                                <div class="py-2 text-gray-400">29</div>
+                                <div class="py-2 text-gray-400">30</div>
+                                <div class="py-2 text-gray-400">31</div>
+                                <div class="py-2 rounded-full hover:bg-gray-100">1</div>
+                                <div class="py-2 rounded-full hover:bg-gray-100">2</div>
+                                <div class="py-2 rounded-full hover:bg-gray-100">3</div>
+                                <div class="py-2 rounded-full hover:bg-gray-100">4</div>
+                                <div class="py-2 rounded-full hover:bg-gray-100">5</div>
+                                <div class="py-2 rounded-full hover:bg-gray-100">6</div>
+                                <div class="py-2 rounded-full hover:bg-gray-100">7</div>
+                                <div class="py-2 rounded-full bg-blue-100 text-blue-800 font-medium">8</div>
+                                <div class="py-2 rounded-full hover:bg-gray-100">9</div>
+                                <div class="py-2 rounded-full hover:bg-gray-100">10</div>
+                                <div class="py-2 rounded-full hover:bg-gray-100">11</div>
+                                <div class="py-2 rounded-full hover:bg-gray-100">12</div>
+                                <div class="py-2 rounded-full bg-yellow-100 text-yellow-800">13</div>
+                                <div class="py-2 rounded-full bg-red-100 text-red-800">14</div>
+                                <div class="py-2 rounded-full hover:bg-gray-100">15</div>
+                                <div class="py-2 rounded-full hover:bg-gray-100">16</div>
+                                <div class="py-2 rounded-full hover:bg-gray-100">17</div>
+                                <div class="py-2 rounded-full hover:bg-gray-100">18</div>
+                                <div class="py-2 rounded-full hover:bg-gray-100">19</div>
+                                <div class="py-2 rounded-full hover:bg-gray-100">20</div>
+                                <div class="py-2 rounded-full hover:bg-gray-100">21</div>
+                                <div class="py-2 rounded-full hover:bg-gray-100">22</div>
+                                <div class="py-2 rounded-full hover:bg-gray-100">23</div>
+                                <div class="py-2 rounded-full hover:bg-gray-100">24</div>
+                                <div class="py-2 rounded-full hover:bg-gray-100">25</div>
+                                <div class="py-2 rounded-full hover:bg-gray-100">26</div>
+                                <div class="py-2 rounded-full hover:bg-gray-100">27</div>
+                                <div class="py-2 rounded-full hover:bg-gray-100">28</div>
+                                <div class="py-2 rounded-full hover:bg-gray-100">29</div>
+                                <div class="py-2 rounded-full hover:bg-gray-100">30</div>
+                                <div class="p-5 border-t border-gray-200">

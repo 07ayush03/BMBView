@@ -1,0 +1,150 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee Attendance</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f0f4f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .attendance-form {
+            background-color: #ffffff;
+            padding: 30px 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .attendance-form h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: 600;
+            display: block;
+            margin-bottom: 8px;
+            color: #444;
+        }
+
+        select, input[type="date"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 16px;
+            background-color: #fafafa;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #0066cc;
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #004c99;
+        }
+
+        .note {
+            font-size: 13px;
+            color: #888;
+            margin-top: 10px;
+            text-align: center;
+        }
+    </style>
+    <script>
+        function loadEmployees() {
+            const dept = document.getElementById("department").value;
+            fetch("get_employees.php?department=" + dept)
+                .then(response => response.json())
+                .then(data => {
+                    const empSelect = document.getElementById("employee_id");
+                    empSelect.innerHTML = "<option disabled selected>-- Select Employee --</option>";
+                    data.forEach(emp => {
+                        const opt = document.createElement("option");
+                        opt.value = emp.id;
+                        opt.textContent = emp.name;
+                        empSelect.appendChild(opt);
+                    });
+                });
+        }
+    </script>
+</head>
+<body>
+    <form class="attendance-form" action="submit_attendance.php" method="POST">
+        <h2>Record Attendance</h2>
+        <a href="index.html" class="nav-item flex items-center p-3 mb-1 rounded hover:bg-blue-700 active-nav-item" id="dashboard-nav">S</a>
+        <div class="form-group">
+            <label for="department">Department</label>
+            <select id="department" name="department" onchange="loadEmployees()" required>
+                <option disabled selected>-- Select Department --</option>
+                <option value="Development">Development</option>
+                <option value="Marketing">Marketing</option>
+                <option value="Operations">Operations</option>
+                <option value="Testing">Testing</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="employee_id">Employee</label>
+            <select id="employee_id" name="employee_id" required>
+                <option disabled selected>-- Select Employee --</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="date">Date</label>
+            <input type="date" id="date" name="date" required>
+        </div>
+
+        <div class="form-group">
+            <label for="status">Attendance Status</label>
+            <select id="status" name="status" required>
+                <option value="Present">Present</option>
+                <option value="Absent">Absent</option>
+                <option value="Late">Late</option>
+                <option value="On Leave">On Leave</option>
+            </select>
+        </div>
+
+        <button type="submit">Submit Attendance</button>
+
+        <div class="note">Attendance data will be saved to the database.</div>
+    </form>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Attendance Redirect</title>
+</head>
+<body>
+  <h2>Open Attendance Form</h2>
+
+  <a href="http://localhost/attendance_form.html" target="_blank">
+    <button>Open Attendance Form</button>
+  </a>
+
+</body>
+</html>

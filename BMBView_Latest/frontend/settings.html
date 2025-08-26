@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Settings | HR Portal</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+  <!-- Header -->
+  <header class="bg-white shadow p-4 flex justify-between items-center sticky top-0 z-10">
+    <div class="flex items-center space-x-4">
+                    <button onclick="window.history.back()" class="text-gray-600 hover:text-gray-900">
+                        <i class="fas fa-arrow-left"></i>
+                    </button>
+                    <div class="text-xl font-semibold text-gray-800">Settings</div>
+                </div>
+    <div>
+      <i class="fas fa-user-cog text-blue-600 text-xl mr-2"></i>
+      <span>Admin</span>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="p-6 max-w-6xl mx-auto space-y-6">
+
+    <!-- Profile Settings -->
+    <section class="bg-white p-6 rounded shadow">
+      <h2 class="text-lg font-semibold mb-4">Admin Profile</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <input type="text" placeholder="Full Name" class="w-full border px-4 py-2 rounded"/>
+        <input type="email" placeholder="Email Address" class="w-full border px-4 py-2 rounded"/>
+        <input type="tel" placeholder="Phone Number" class="w-full border px-4 py-2 rounded"/>
+        <input type="password" placeholder="Change Password" class="w-full border px-4 py-2 rounded"/>
+      </div>
+      <button class="mt-4 px-6 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
+        Save Profile
+      </button>
+    </section>
+
+    <!-- Leave Policy -->
+    <section class="bg-white p-6 rounded shadow">
+      <h2 class="text-lg font-semibold mb-4">Leave Policy</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <input type="number" placeholder="Annual Leave Days" class="w-full border px-4 py-2 rounded"/>
+        <input type="number" placeholder="Sick Leave Days" class="w-full border px-4 py-2 rounded"/>
+        <input type="number" placeholder="Casual Leave Days" class="w-full border px-4 py-2 rounded"/>
+        <select class="w-full border px-4 py-2 rounded">
+          <option>Leave Approval Required</option>
+          <option>Yes</option>
+          <option>No</option>
+        </select>
+      </div>
+      <button class="mt-4 px-6 py-2 bg-green-600 text-white rounded hover:bg-green-700">
+        Update Leave Policy
+      </button>
+    </section>
+
+    <!-- Attendance Settings -->
+    <section class="bg-white p-6 rounded shadow">
+      <h2 class="text-lg font-semibold mb-4">Attendance Rules</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <input type="time" placeholder="Work Start Time" class="w-full border px-4 py-2 rounded"/>
+        <input type="time" placeholder="Work End Time" class="w-full border px-4 py-2 rounded"/>
+        <input type="number" placeholder="Grace Period (mins)" class="w-full border px-4 py-2 rounded"/>
+        <input type="number" placeholder="Min Hours for Full Day" class="w-full border px-4 py-2 rounded"/>
+      </div>
+      <button class="mt-4 px-6 py-2 bg-purple-600 text-white rounded hover:bg-purple-700">
+        Save Attendance Rules
+      </button>
+    </section>
+
+    <!-- Performance Settings -->
+    <section class="bg-white p-6 rounded shadow">
+      <h2 class="text-lg font-semibold mb-4">Performance Criteria</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <input type="number" placeholder="Max Score" class="w-full border px-4 py-2 rounded"/>
+        <input type="text" placeholder="Rating Scale (e.g. 1-5)" class="w-full border px-4 py-2 rounded"/>
+        <textarea placeholder="Performance Metrics (e.g. Punctuality, Teamwork, Targets Met)" rows="3" class="w-full border px-4 py-2 rounded md:col-span-2"></textarea>
+      </div>
+      <button class="mt-4 px-6 py-2 bg-yellow-600 text-white rounded hover:bg-yellow-700">
+        Save Performance Settings
+      </button>
+    </section>
+
+  </main>
+</body>
+</html>
